@@ -78,24 +78,30 @@ public class LoginStepsDef {
     }
 
     @Cuando("finalizo la compra")
-    public void finalizo_la_compra(){
+    public void finalizo_la_compra()throws InterruptedException{
         InventorySteps inventorySteps = new InventorySteps(driver);
         inventorySteps.getFinalizar();
+        Thread.sleep(1000);
 
     }
 
-    @Y("también valido que al menos exista un item")
-    public void también_valido_que_al_menos_exista_un_item() {
-        int itemsListSize = inventorySteps(driver).getItemSize();
-        //prueba: validar que al menos exista un item
-        screenShot();
-        Assertions.assertTrue(itemsListSize > 0, "El tamaño de la lista es: " + itemsListSize);
+    @Entonces("valido el titulo de la pagina del {string}")
+        public void valido_el_titulo_de_la_pagina_del(String expectedTitle){
+        String title = inventorySteps(driver).getCarritoVal();
+        Assertions.assertEquals(expectedTitle, title);
 
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    }
+
+    @Y ("vuelvo a validar el calculo de precios en el carrito {string}")
+        public void vuelvo_a_validar_el_calculo_de_precios_en_el_carrito(String expectedTitle){
+        String title = inventorySteps(driver).getPrecioVal();
+        Assertions.assertEquals(expectedTitle, title);
+    }
+
+    @Cuando("navego a la categoria autos")
+        public void navego_a_la_categoria_autos(){
+        InventorySteps inventorySteps = new InventorySteps(driver);
+        inventorySteps.getAutos();
     }
 
 

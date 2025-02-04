@@ -14,5 +14,8 @@ public class InventoryPage {
     public static By carrito = By.cssSelector("button.btn.btn-primary.add-to-cart");
     public static By popup = By.id("myModalLabel");
     public static By precioT = By.cssSelector("span.value");
-    public static By finalizar = By.cssSelector("a.btn.btn-primary");
+    public static By finalizar = By.cssSelector("a.btn.btn-primary i.material-icons");
+    public static By carritoVal = By.className("h1");
+    public static By precioVal = By.cssSelector("strong");
+    public static By autosTitle = By.id("autos");
 }

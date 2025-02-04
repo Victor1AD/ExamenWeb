@@ -67,4 +67,16 @@ public class InventorySteps {
     public void getFinalizar(){
         this.driver.findElement(InventoryPage.finalizar).click();
     }
+
+    public String getCarritoVal(){
+        return this.driver.findElement(InventoryPage.carritoVal).getText();
+    }
+
+    public String getPrecioVal(){
+        return this.driver.findElement(InventoryPage.precioVal).getText();
+    }
+
+    public void getAutos(){
+        this.driver.findElement(InventoryPage.autosTitle).click();
+    }
 }
