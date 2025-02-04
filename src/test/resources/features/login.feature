@@ -8,6 +8,10 @@ Característica: Product - Store
     Dado estoy en la página de la tienda
     Y me logueo con mi usuario "leoalarcon185@gmail.com" y clave "ExamenWeb185"
     Cuando navego a la categoria Clothes y subcategoria Men
+    Y agrego 2 unidades del primer producto al carrito
+    Entonces valido en el popup la confirmación del producto agregado "Producto añadido correctamente a su carrito de compra"
+    Y valido en el popup que el monto total sea calculado correctamente "38,24 PEN"
+    Cuando finalizo la compra
 
 
 

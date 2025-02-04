@@ -44,4 +44,27 @@ public class InventorySteps {
         this.driver.findElement(InventoryPage.menTittle).click();
     }
 
+    public void getCompra(){
+        this.driver.findElement(InventoryPage.compraTitle).click();
+    }
+
+    public void getCantidad(){
+        this.driver.findElement(InventoryPage.cantidad).click();
+    }
+
+    public void getCarrito(){
+        this.driver.findElement(InventoryPage.carrito).click();
+    }
+
+    public String getPopUp(){
+        return this.driver.findElement(InventoryPage.popup).getText();
+    }
+
+    public String getPrecioT(){
+        return this.driver.findElement(InventoryPage.precioT).getText();
+    }
+
+    public void getFinalizar(){
+        this.driver.findElement(InventoryPage.finalizar).click();
+    }
 }

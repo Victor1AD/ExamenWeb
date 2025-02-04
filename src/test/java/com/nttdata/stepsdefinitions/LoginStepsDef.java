@@ -51,7 +51,38 @@ public class LoginStepsDef {
 
     }
 
+    @Y("agrego 2 unidades del primer producto al carrito")
+    public void agrego_2_unidades_del_primer_producto_al_carrito() throws InterruptedException {
+        InventorySteps inventorySteps = new InventorySteps(driver);
+        inventorySteps.getCompra();
+        inventorySteps.getCantidad();
+        inventorySteps.getCarrito();
 
+        Thread.sleep(1000);
+    }
+
+     @Entonces("valido en el popup la confirmación del producto agregado {string}")
+     public void valido_en_el_popup_la_confirmación_del_producto_agregado(String expectedTitle ){
+        String title = inventorySteps(driver).getPopUp();
+
+        Assertions.assertEquals(expectedTitle, title);
+
+    }
+
+    @Entonces("valido en el popup que el monto total sea calculado correctamente {string}")
+    public void valido_en_el_popup_que_el_monto_total_sea_calculado_correctamente(String expectedTitle ){
+        String title = inventorySteps(driver).getPrecioT();
+
+        Assertions.assertEquals(expectedTitle, title);
+
+    }
+
+    @Cuando("finalizo la compra")
+    public void finalizo_la_compra(){
+        InventorySteps inventorySteps = new InventorySteps(driver);
+        inventorySteps.getFinalizar();
+
+    }
 
     @Y("también valido que al menos exista un item")
     public void también_valido_que_al_menos_exista_un_item() {
