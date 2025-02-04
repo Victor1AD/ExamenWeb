@@ -36,4 +36,12 @@ public class InventorySteps {
         this.driver.findElement(InventoryPage.loginTittle).click();
     }
 
+    public void getClothes(){
+        this.driver.findElement(InventoryPage.clothesTittle).click();
+    }
+
+    public void getMen(){
+        this.driver.findElement(InventoryPage.menTittle).click();
+    }
+
 }

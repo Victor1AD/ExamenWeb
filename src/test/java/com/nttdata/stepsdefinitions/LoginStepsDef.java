@@ -22,8 +22,8 @@ public class LoginStepsDef {
         return new InventorySteps(driver);
     }
 
-    @Dado("que me encuentro en la página de login de Saucedemo")
-    public void que_me_encuentro_en_la_página_de_login_de_sacedemo() {
+    @Dado("estoy en la página de la tienda")
+    public void estoy_en_la_página_de_la_tienda() {
         driver = getDriver();
     //    driver.get("https://www.saucedemo.com/");
         driver.get("https://qalab.bensg.com/store/es/");
@@ -31,26 +31,28 @@ public class LoginStepsDef {
 
     }
 
-    @Y("doy click en iniciar sesion")
-    public void doy_click_en_iniciar_sesion() {
+    @Y("me logueo con mi usuario {string} y clave {string}")
+    public void me_logueo_con_mi_usuario_y_clave(String user, String password) {
         InventorySteps inventorySteps = new InventorySteps(driver);
         inventorySteps.getLogin();
-    }
-
-    @Cuando("inicio sesión con las credenciales usuario: {string} y contraseña: {string}")
-    public void inicio_sesión_con_las_credenciales_usuario_y_contraseña(String user, String password) {
         LoginSteps loginSteps = new LoginSteps(driver);
         loginSteps.typeUser(user);
         loginSteps.typePassword(password);
         loginSteps.login();
         screenShot();
     }
-    @Entonces("valido que debería aparecer el título de {string}")
-    public void valido_que_debería_aparecer_el_título_de(String expectedTitle) {
-        String title =  inventorySteps(driver).getTitle();
-        //prueba: validamos el título del producto
-        Assertions.assertEquals(expectedTitle, title);
+
+
+    @Cuando("navego a la categoria Clothes y subcategoria Men")
+    public void navego_a_la_categoria_Clothes_y_subcategoria_men() {
+        InventorySteps inventorySteps = new InventorySteps(driver);
+        inventorySteps.getClothes();
+        inventorySteps.getMen();
+
     }
+
+
+
     @Y("también valido que al menos exista un item")
     public void también_valido_que_al_menos_exista_un_item() {
         int itemsListSize = inventorySteps(driver).getItemSize();
